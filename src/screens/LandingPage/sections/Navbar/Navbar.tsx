@@ -61,32 +61,34 @@ export const Navbar = (): JSX.Element => {
       </div>
 
       <div className="inline-flex items-start gap-[42px] relative flex-[0_0_auto]">
-        <div className="relative w-fit mt-[-1.00px] [font-family:'SF_UI_Text-Medium',Helvetica] font-medium text-gray-800 text-sm tracking-[0] leading-[21px] whitespace-nowrap">
+        <a href="#home" className="relative w-fit mt-[-1.00px] [font-family:'SF_UI_Text-Medium',Helvetica] font-medium text-gray-800 text-sm tracking-[0] leading-[21px] whitespace-nowrap hover:text-[#2d57ed] transition-colors">
           Home
-        </div>
+        </a>
 
-        <div className="relative w-fit mt-[-1.00px] [font-family:'SF_UI_Text-Medium',Helvetica] font-medium text-gray-800 text-sm tracking-[0] leading-[21px] whitespace-nowrap">
+        <a href="#about" className="relative w-fit mt-[-1.00px] [font-family:'SF_UI_Text-Medium',Helvetica] font-medium text-gray-800 text-sm tracking-[0] leading-[21px] whitespace-nowrap hover:text-[#2d57ed] transition-colors">
           About
-        </div>
+        </a>
 
-        <div className="relative w-fit mt-[-1.00px] [font-family:'SF_UI_Text-Medium',Helvetica] font-medium text-gray-800 text-sm tracking-[0] leading-[21px] whitespace-nowrap">
+        <a href="#features" className="relative w-fit mt-[-1.00px] [font-family:'SF_UI_Text-Medium',Helvetica] font-medium text-gray-800 text-sm tracking-[0] leading-[21px] whitespace-nowrap hover:text-[#2d57ed] transition-colors">
           Features
-        </div>
+        </a>
 
-        <div className="relative w-fit mt-[-1.00px] [font-family:'SF_UI_Text-Medium',Helvetica] font-medium text-gray-800 text-sm tracking-[0] leading-[21px] whitespace-nowrap">
+        <a href="#contact" className="relative w-fit mt-[-1.00px] [font-family:'SF_UI_Text-Medium',Helvetica] font-medium text-gray-800 text-sm tracking-[0] leading-[21px] whitespace-nowrap hover:text-[#2d57ed] transition-colors">
           Contact Us
-        </div>
+        </a>
       </div>
 
       <div className="inline-flex items-center gap-6 relative flex-[0_0_auto]">
-        <div className="relative w-fit [font-family:'SF_UI_Text-Medium',Helvetica] font-medium text-gray-800 text-sm text-center tracking-[0] leading-[21px] whitespace-nowrap">
-          Sign Up
-        </div>
+        <button className="inline-flex h-12 items-center justify-center gap-2.5 px-6 py-3 relative flex-[0_0_auto] bg-gray-100 rounded-xl hover:bg-gray-200 transition-colors">
+          <div className="relative w-fit [font-family:'SF_UI_Text-Medium',Helvetica] font-medium text-gray-800 text-sm text-center tracking-[0] leading-[21px] whitespace-nowrap">
+            Sign Up
+          </div>
+        </button>
 
         {isInstallable && (
-          <div 
+          <button 
             onClick={handleInstallClick}
-            className="inline-flex h-12 items-center justify-center gap-2.5 px-6 py-3 relative flex-[0_0_auto] bg-gray-100 rounded-xl cursor-pointer"
+            className="inline-flex h-12 items-center justify-center gap-2.5 px-6 py-3 relative flex-[0_0_auto] bg-gray-100 rounded-xl cursor-pointer hover:bg-gray-200 transition-colors"
           >
             <div className="relative w-fit [font-family:'SF_UI_Text-Medium',Helvetica] font-medium text-gray-800 text-sm text-center tracking-[0] leading-[21px] whitespace-nowrap">
               Install App
@@ -94,14 +96,14 @@ export const Navbar = (): JSX.Element => {
             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
               <path fillRule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clipRule="evenodd" />
             </svg>
-          </div>
+          </button>
         )}
 
-        <div className="inline-flex h-12 items-center justify-center gap-2.5 px-8 py-3 relative flex-[0_0_auto] bg-[#2d57ed] rounded-xl shadow-[0px_34px_34px_#1353fe0d]">
+        <button className="inline-flex h-12 items-center justify-center gap-2.5 px-8 py-3 relative flex-[0_0_auto] bg-[#2d57ed] rounded-xl shadow-[0px_34px_34px_#1353fe0d] hover:bg-[#2448d0] transition-colors">
           <div className="relative w-fit [font-family:'SF_UI_Text-Medium',Helvetica] font-medium text-white text-sm text-center tracking-[0] leading-[21px] whitespace-nowrap">
             Login
           </div>
-        </div>
+        </button>
       </div>
     </div>
   );
