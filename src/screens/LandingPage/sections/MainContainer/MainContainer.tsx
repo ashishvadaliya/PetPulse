@@ -1,107 +1,10 @@
 import React from "react";
+import { PartnersSection } from "../PartnersSection";
 
 export const MainContainer = (): JSX.Element => {
   return (
     <div className="flex flex-col w-[1440px] items-start absolute top-0 left-0">
-      <header className="flex items-start justify-center gap-[100px] px-[135px] py-[30px] relative self-stretch w-full flex-[0_0_auto] bg-gray-100">
-        <img
-          className="relative w-[117.84px] h-[26.32px] mt-[-772.00px] ml-[-16681.93px]"
-          alt="Logo"
-          src="https://c.animaapp.com/A7ONEzUZ/img/group-2@2x.png"
-        />
-
-        <div className="relative w-[133.68px] h-7 ml-[-243.09px]">
-          <img
-            className="absolute w-[26px] h-7 top-0 left-[108px]"
-            alt="Group"
-            src="https://c.animaapp.com/A7ONEzUZ/img/group-1@2x.png"
-          />
-        </div>
-
-        <div className="relative w-[125.8px] h-[21.05px] ml-[-9.41px]">
-          <img
-            className="absolute w-[23px] h-[21px] top-0 left-[103px]"
-            alt="Logo icon"
-            src="https://c.animaapp.com/A7ONEzUZ/img/logo-icon@2x.png"
-          />
-
-          <img
-            className="absolute w-[95px] h-[19px] top-0.5 left-0"
-            alt="Martino"
-            src="https://c.animaapp.com/A7ONEzUZ/img/martino.svg"
-          />
-        </div>
-
-        <div className="relative w-[133.91px] h-[26.7px]">
-          <img
-            className="absolute w-[22px] h-[22px] top-0 left-0"
-            alt="Logo icon"
-            src="https://c.animaapp.com/A7ONEzUZ/img/logo-icon-1@2x.png"
-          />
-
-          <img
-            className="absolute w-[107px] h-[26px] top-px left-[27px]"
-            alt="Virogan"
-            src="https://c.animaapp.com/A7ONEzUZ/img/virogan.svg"
-          />
-        </div>
-
-        <div className="relative w-[128.73px] h-[25.4px]">
-          <img
-            className="absolute w-[29px] h-[25px] top-0 left-0"
-            alt="Logo icon"
-            src="https://c.animaapp.com/A7ONEzUZ/img/logo-icon-2@2x.png"
-          />
-
-          <img
-            className="absolute w-[95px] h-[15px] top-1.5 left-[34px]"
-            alt="Vertex"
-            src="https://c.animaapp.com/A7ONEzUZ/img/vertex.svg"
-          />
-        </div>
-
-        <div className="relative w-[115.8px] h-[22.28px]">
-          <img
-            className="absolute w-[23px] h-[21px] top-px left-0"
-            alt="Logo icon"
-            src="https://c.animaapp.com/A7ONEzUZ/img/logo-icon-3@2x.png"
-          />
-
-          <img
-            className="absolute w-[86px] h-[19px] top-0 left-[30px]"
-            alt="Aromix"
-            src="https://c.animaapp.com/A7ONEzUZ/img/aromix.svg"
-          />
-        </div>
-
-        <div className="relative w-[73.57px] h-[22.17px]">
-          <img
-            className="absolute w-[22px] h-[22px] top-0 left-0"
-            alt="Logo icon"
-            src="https://c.animaapp.com/A7ONEzUZ/img/logo-icon-4@2x.png"
-          />
-
-          <img
-            className="absolute w-[45px] h-[19px] top-[3px] left-[29px]"
-            alt="Fireli"
-            src="https://c.animaapp.com/A7ONEzUZ/img/fireli.svg"
-          />
-        </div>
-
-        <div className="relative w-[113px] h-[25px] mr-[-11.41px]">
-          <div className="absolute top-0 left-0 [font-family:'Alex_Brush',Helvetica] font-normal text-gray-800 text-[32.9px] text-center tracking-[0] leading-[24.3px] whitespace-nowrap">
-            Natroma
-          </div>
-        </div>
-
-        <img
-          className="relative w-[25.59px] h-[26.32px] mr-[-135.00px]"
-          alt="Logo"
-          src="https://c.animaapp.com/A7ONEzUZ/img/logo-1@2x.png"
-        />
-
-        <div className="relative w-[133.68px] h-7 mt-[-772.00px] ml-[-14723.75px] bg-[url(https://c.animaapp.com/A7ONEzUZ/img/group-2@2x.png)] bg-[100%_100%]" />
-      </header>
+      <PartnersSection />
 
       <div className="flex flex-col items-center gap-12 px-[135px] py-[72px] relative self-stretch w-full flex-[0_0_auto] bg-white">
         <div className="flex flex-col w-[570px] items-center gap-4 relative flex-[0_0_auto]">

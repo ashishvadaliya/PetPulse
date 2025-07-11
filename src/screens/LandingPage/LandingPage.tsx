@@ -1,10 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { HeroSection } from "./sections/HeroSection";
 import { MainContainer } from "./sections/MainContainer";
 import { Navbar } from "./sections/Navbar";
 import { OfflineAlert } from "../../components/OfflineAlert";
 
 export const LandingPage = (): JSX.Element => {
+  // Add page title and meta description for SEO and PWA
+  useEffect(() => {
+    document.title = "PetPulse - Your Pet's Health, Powered by AI";
+    
+    // Update meta description
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute('content', 'Meet PetPulse — the all-in-one AI-powered health companion for your pet. Track symptoms, shop essentials, get emergency support, and more — anytime, anywhere.');
+    }
+  }, []);
+
   return (
     <div
       className="bg-white flex flex-row justify-center w-full"
