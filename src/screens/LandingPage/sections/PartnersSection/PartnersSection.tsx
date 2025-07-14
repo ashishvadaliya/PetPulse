@@ -41,12 +41,12 @@ export const PartnersSection = (): JSX.Element => {
   const repeatedPartners = [...partners, ...partners]; // clone for smooth loop
 
   return (
-    <div className="w-full overflow-hidden bg-gray-100 py-6">
+    <div className="w-full overflow-hidden bg-gray-100 py-4 md:py-6">
       <div className="whitespace-nowrap animate-partner-slide flex gap-10">
         {repeatedPartners.map((partner, index) => (
           <div
             key={`${partner.name}-${index}`}
-            className="flex-shrink-0 flex items-center justify-center min-w-[200px]"
+            className="flex-shrink-0 flex items-center justify-center md:min-w-[200px]"
           >
             {partner.isCustomFont ? (
               <div className="[font-family:'Alex_Brush',Helvetica] font-normal text-gray-800 text-[32.9px] text-center tracking-[0] leading-[24.3px] whitespace-nowrap">

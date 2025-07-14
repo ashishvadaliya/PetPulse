@@ -11,7 +11,9 @@
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.8.1"
+    "react-icomoon": "^2.6.1",
+    "react-router-dom": "^6.8.1",
+    "swiper": "^11.2.10"
   },
   "devDependencies": {
     "@types/react": "18.2.0",

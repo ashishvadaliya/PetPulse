@@ -1,8 +1,10 @@
-import  { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
+import Icon from "../../../../components/Utils/Icon";
 
 export const Navbar = (): JSX.Element => {
   const [isInstallable, setIsInstallable] = useState<boolean>(false);
   const [deferredPrompt, setDeferredPrompt] = useState<any>(null);
+  // const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     const handleBeforeInstallPrompt = (e: Event) => {
@@ -43,8 +45,8 @@ export const Navbar = (): JSX.Element => {
   };
 
   return (
-    <div className="container flex items-center justify-between py-5 w-full">
-      <div className="w-[178px]">
+    <div className="container flex items-center justify-between py-2.5 md:py-5 w-full">
+      <div className="w-[178px] cursor-pointer">
         <img
           className="w-[124px] h-9"
           alt="Logo white"
@@ -52,20 +54,26 @@ export const Navbar = (): JSX.Element => {
         />
       </div>
 
-      <div className="flex items-center gap-[42px]">
+      <div 
+        className="relative flex justify-center items-center md:hidden bg-button px-[11px] py-[11px] rounded-lg"
+        // onClick={() => setIsOpen(true)}
+        >
+        <Icon icon="bar" className="w-5 h-5 text-white" />
+      </div>
+      <div className="hidden md:flex items-center gap-[42px]">
         {["Home", "About", "Features", "Contact Us"].map((text) => (
           <a
             key={text}
             href={`#${text.toLowerCase().replace(/\s+/g, "")}`}
-            className="text-sm font-medium text-gray-800 hover:text-[#2d57ed] transition-colors"
+            className="font-sf-semibold text-sm font-medium text-gray-800 hover:text-[#2d57ed] transition-colors"
           >
             {text}
           </a>
         ))}
       </div>
 
-      <div className="flex items-center gap-6">
-        <button className="h-12 px-6 py-3 rounded-xl hover:bg-gray-200 transition-colors bg-transparent !border-none text-sm font-medium text-gray-800">
+      <div className="hidden md:flex items-center gap-6">
+        <button className="font-sf-semibold h-12 px-6 py-3 cursor-pointer rounded-xl hover:bg-gray-200 transition-colors bg-transparent !border-none text-sm font-medium text-gray-800">
           Sign Up
         </button>
 
@@ -85,10 +93,15 @@ export const Navbar = (): JSX.Element => {
           </button>
         )} */}
 
-        <button className="h-12 px-8 py-3 bg-[#2d57ed] rounded-xl shadow-[0px_34px_34px_#1353fe0d] hover:bg-[#2448d0] transition-colors !border-none text-white text-sm font-medium">
+        <button className="h-12 px-8 py-3 bg-[#2d57ed] rounded-xl cursor-pointer shadow-[0px_34px_34px_#1353fe0d] hover:bg-[#2448d0] transition-colors !border-none text-white text-sm font-medium">
           Login
         </button>
       </div>
+      {/* {isOpen && (
+        <div className={` bg-white absolute z-30 top-0 left-0 w-[300px] h-full ease-in-out duration-300 ${isOpen ? "translate-x-full" : "-translate-x-0"}`}>
+          hello
+        </div>
+      )} */}
     </div>
   );
 };

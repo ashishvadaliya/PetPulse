@@ -65,27 +65,27 @@ export const FAQSection = (): JSX.Element => {
   const rightColumnFAQs = faqs.slice(5);
 
   return (
-    <div className="container flex flex-col w-full items-center gap-12 py-[72px] relative flex-[0_0_auto]">
-      <div className="relative w-fit mt-[-1.00px] [font-family:'SF_UI_Text-Semibold',Helvetica] font-normal text-gray-800 text-[42px] tracking-[0] leading-[63px] whitespace-nowrap">
+    <div className="container flex flex-col w-full items-center gap-6 py-8 md:gap-12 md:py-[72px] relative flex-[0_0_auto]">
+      <div className="relative w-fit mt-[-1.00px] text-center [font-family:'SF_UI_Text-Semibold',Helvetica] font-normal text-gray-800 text-[28px] md:text-[42px] tracking-[0] leading-[45px] md:leading-[63px]">
         Frequently Asked Questions
       </div>
 
-      <div className="flex flex-col items-start justify-end gap-3 p-3 relative self-stretch w-full flex-[0_0_auto] bg-gray-100 rounded-[30px]">
-        <div className="flex items-start gap-3 relative self-stretch w-full flex-[0_0_auto]">
-          <div className="flex flex-col items-start gap-3 relative flex-1 grow">
+      <div className="flex flex-col items-start justify-end gap-3 p-2 md:p-3 relative self-stretch w-full flex-[0_0_auto] bg-gray-100 rounded-[30px]">
+        <div className="flex md:flex-row flex-col items-start gap-3 relative self-stretch w-full flex-[0_0_auto]">
+          <div className="flex flex-col w-full items-start gap-3 relative flex-1 grow">
             {leftColumnFAQs.map((faq, index) => (
               <div 
                 key={`faq-left-${index}`} 
-                className={`flex items-start gap-6 pl-8 pr-4 py-4 relative self-stretch w-full flex-[0_0_auto] bg-white rounded-3xl shadow-[0px_4px_12px_#00000014] cursor-pointer transition-all duration-300 ${faq.isOpen ? 'mb-2' : ''}`}
+                className={`flex items-start gap-4 md:gap-6 pl-5 md:pl-8 pr-3 py-3 md:pr-4 md:py-4 relative self-stretch w-full flex-[0_0_auto] bg-white rounded-3xl shadow-[0px_4px_12px_#00000014] cursor-pointer transition-all duration-300 ${faq.isOpen ? '' : ''}`}
                 onClick={() => toggleFAQ(index)}
               >
-                <div className="flex flex-col items-start justify-center gap-3 relative flex-1 grow">
-                  <div className="relative w-fit mt-[-1.00px] [font-family:'SF_UI_Text-Medium',Helvetica] font-medium text-gray-800 text-xl tracking-[0] leading-[30px] whitespace-nowrap">
+                <div className="flex flex-col items-start justify-center gap-2 md:gap-3 relative flex-1 grow">
+                  <div className="relative w-fit mt-[-1.00px] [font-family:'SF_UI_Text-Medium',Helvetica] font-medium text-gray-800 text-base md:text-xl tracking-[0] md:leading-[30px]">
                     {faq.question}
                   </div>
 
                   {faq.isOpen && (
-                    <p className="relative self-stretch [font-family:'SF_UI_Text-Regular',Helvetica] font-normal text-gray-600 text-sm tracking-[0] leading-[21px] m-0">
+                    <p className="relative self-stretch [font-family:'SF_UI_Text-Regular',Helvetica] font-normal text-gray-600 text-xs md:text-sm tracking-[0.5px] md:tracking-[0] leading-[21px] m-0">
                       {faq.answer}
                     </p>
                   )}
@@ -93,7 +93,7 @@ export const FAQSection = (): JSX.Element => {
 
                 {/* Using different icons for open/closed state instead of rotation */}
                 <img
-                  className="relative w-11 h-11"
+                  className="relative w-8 h-8 md:w-11 md:h-11"
                   alt="Toggle FAQ"
                   src={faq.isOpen 
                     ? "/images/remove.svg" 
@@ -103,20 +103,20 @@ export const FAQSection = (): JSX.Element => {
             ))}
           </div>
 
-          <div className="flex flex-col items-start gap-3 relative flex-1 grow">
+          <div className="flex flex-col w-full items-start gap-2 md:gap-3 relative flex-1 grow">
             {rightColumnFAQs.map((faq, index) => (
               <div 
                 key={`faq-right-${index}`} 
-                className={`flex items-start gap-6 pl-8 pr-4 py-4 relative self-stretch w-full flex-[0_0_auto] bg-white rounded-3xl shadow-[0px_4px_12px_#00000014] cursor-pointer transition-all duration-300 ${faq.isOpen ? 'mb-2' : ''}`}
+                className={`flex items-start gap-6 pl-5 pr-3 py-3 md:pl-8 md:pr-4 md:py-4 relative self-stretch w-full flex-[0_0_auto] bg-white rounded-3xl shadow-[0px_4px_12px_#00000014] cursor-pointer transition-all duration-300 ${faq.isOpen ? 'mb-2' : ''}`}
                 onClick={() => toggleFAQ(index + leftColumnFAQs.length)}
               >
                 <div className="flex flex-col items-start justify-center gap-3 relative flex-1 grow">
-                  <div className="relative w-fit mt-[-1.00px] [font-family:'SF_UI_Text-Medium',Helvetica] font-medium text-gray-800 text-xl tracking-[0] leading-[30px] whitespace-nowrap">
+                  <div className="relative w-fit mt-[-1.00px] [font-family:'SF_UI_Text-Medium',Helvetica] font-medium text-gray-800 text-base md:text-xl tracking-[0] md:leading-[30px]">
                     {faq.question}
                   </div>
 
                   {faq.isOpen && (
-                    <p className="relative self-stretch [font-family:'SF_UI_Text-Regular',Helvetica] font-normal text-gray-600 text-sm tracking-[0] leading-[21px]">
+                    <p className="relative self-stretch [font-family:'SF_UI_Text-Regular',Helvetica] font-normal text-gray-600 text-xs md:text-sm tracking-[0] leading-[21px]">
                       {faq.answer}
                     </p>
                   )}
