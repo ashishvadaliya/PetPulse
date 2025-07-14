@@ -2,7 +2,94 @@
 @tailwind utilities;
 
 @layer components {
-  .all-\[unset\] {
-    all: unset;
-  }
+	.all-\[unset\] {
+		all: unset;
+	}
+}
+
+@import url("https://fonts.googleapis.com/css?family=Alex+Brush:400");
+
+
+@font-face {
+	font-family: "SF UI Text-Medium";
+	src: url("/fonts/sf-ui-text-medium.ttf") format("truetype");
+}
+
+@font-face {
+	font-family: "SF UI Text-Semibold";
+	src: url("/fonts/sf-ui-text-semibold.eot");
+}
+
+@font-face {
+	font-family: "SF UI Text-Regular";
+	src: url("/fonts/sf-ui-text-regular.ttf") format("truetype");
+}
+
+/* Optional: normalize */
+@import url("https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css");
+
+* {
+	-webkit-font-smoothing: antialiased;
+	box-sizing: border-box;
+}
+
+html,
+body {
+	margin: 0;
+	height: 100%;
+}
+
+button:focus-visible {
+	outline: 2px solid #4a90e2 !important;
+	outline: -webkit-focus-ring-color auto 5px !important;
+}
+
+a {
+	text-decoration: none;
+}
+
+@layer utilities {
+	.container {
+		/* Center the container */
+		margin-left: auto;
+		margin-right: auto;
+
+		/* Apply padding */
+		padding-left: 24px;
+		padding-right: 24px;
+
+		/* Apply custom breakpoints */
+		width: 100%;
+		max-width: 1170px;
+		/* Apply 1170px max-width on large screens */
+	}
+
+	/* Custom breakpoints */
+	@media (min-width: 600px) {
+		.container {
+			max-width: 1170px;
+			padding-left: 24px;
+			padding-right: 24px;
+		}
+	}
+
+	@media (min-width: 1170px) {
+		.container {
+			max-width: 1170px;
+			padding-left: 0px;
+			padding-right: 0px;
+		}
+	}
+
+	@media (min-width: 1240px) {
+		.container {
+			max-width: 1170px;
+		}
+	}
+
+	@media (min-width: 1496px) {
+		.container {
+			max-width: 1170px;
+		}
+	}
 }

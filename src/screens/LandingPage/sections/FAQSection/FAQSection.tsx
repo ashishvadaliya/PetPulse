@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 interface FAQItem {
   question: string;
@@ -65,7 +65,7 @@ export const FAQSection = (): JSX.Element => {
   const rightColumnFAQs = faqs.slice(5);
 
   return (
-    <div className="flex flex-col w-[1440px] items-center gap-12 px-[135px] py-[72px] relative flex-[0_0_auto]">
+    <div className="container flex flex-col w-full items-center gap-12 py-[72px] relative flex-[0_0_auto]">
       <div className="relative w-fit mt-[-1.00px] [font-family:'SF_UI_Text-Semibold',Helvetica] font-normal text-gray-800 text-[42px] tracking-[0] leading-[63px] whitespace-nowrap">
         Frequently Asked Questions
       </div>
@@ -85,7 +85,7 @@ export const FAQSection = (): JSX.Element => {
                   </div>
 
                   {faq.isOpen && (
-                    <p className="relative self-stretch [font-family:'SF_UI_Text-Regular',Helvetica] font-normal text-gray-600 text-sm tracking-[0] leading-[21px]">
+                    <p className="relative self-stretch [font-family:'SF_UI_Text-Regular',Helvetica] font-normal text-gray-600 text-sm tracking-[0] leading-[21px] m-0">
                       {faq.answer}
                     </p>
                   )}
@@ -96,8 +96,8 @@ export const FAQSection = (): JSX.Element => {
                   className="relative w-11 h-11"
                   alt="Toggle FAQ"
                   src={faq.isOpen 
-                    ? "https://c.animaapp.com/A7ONEzUZ/img/vuesax-linear-add.svg" 
-                    : "https://c.animaapp.com/A7ONEzUZ/img/vuesax-linear-add-9.svg"}
+                    ? "/images/remove.svg" 
+                    : "/images/add.svg"}
                 />
               </div>
             ))}
@@ -127,8 +127,8 @@ export const FAQSection = (): JSX.Element => {
                   className="relative w-11 h-11"
                   alt="Toggle FAQ"
                   src={faq.isOpen 
-                    ? "https://c.animaapp.com/A7ONEzUZ/img/vuesax-linear-add.svg" 
-                    : "https://c.animaapp.com/A7ONEzUZ/img/vuesax-linear-add-9.svg"}
+                    ? "/images/remove.svg" 
+                    : "/images/add.svg"}
                 />
               </div>
             ))}
