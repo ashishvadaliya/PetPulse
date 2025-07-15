@@ -2,15 +2,33 @@ import { HeroSection } from "./sections/HeroSection";
 import { MainContainer } from "./sections/MainContainer";
 import { Navbar } from "./sections/Navbar";
 import { OfflineAlert } from "../../components/OfflineAlert";
+import { useEffect, useRef, useState } from "react";
 
 export const LandingPage = (): JSX.Element => {
+
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const [hasScrolled, setHasScrolled] = useState(false);
+
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+
+    const onScroll = () => {
+      setHasScrolled(el.scrollTop > 0);
+    };
+
+    el.addEventListener("scroll", onScroll);
+    return () => el.removeEventListener("scroll", onScroll);
+  }, []);
   return (
-    <div className="bg-white w-full flex flex-col">
+    <div
+      ref={containerRef}
+      className="bg-white w-full flex flex-col relative h-screen overflow-y-auto">
       <OfflineAlert />
+      <Navbar hasScrolled={hasScrolled} />
 
       {/* HEADER + HERO SECTION + GLOW */}
       <div className="w-full relative">
-        <Navbar />
         <div className="w-full flex flex-col lg:min-[1025px]:flex-row relative">
           {/* LEFT: Hero Section */}
           <div className="w-full lg:min-[1025px]:w-1/2 relative z-10">
@@ -18,7 +36,7 @@ export const LandingPage = (): JSX.Element => {
           </div>
 
           {/* RIGHT: Decorative Popup */}
-          <div className="w-full lg:min-[1025px]:w-[703px] md:h-[756px]">
+          <div className="w-full lg:min-[1025px]:w-[703px] md:h-[684px]">
             {/* Dots */}
             <div className="relative w-full lg:min-[1025px]:w-full flex justify-end items-center min-h-[408px] md:min-h-[684px]">
               <div className="relative w-[327px] max-w-[327px] md:max-w-full md:w-full h-[430px] md:h-[684px]">
@@ -42,7 +60,7 @@ export const LandingPage = (): JSX.Element => {
                 />
 
                 <img
-                  className="absolute w-[327px] max-w-[327px] md:max-w-full h-[408px] md:w-[561px] md:h-[684px] top-[24px] right-0"
+                  className="absolute w-[327px] max-w-[327px] md:max-w-full h-[408px] md:w-[561px] md:h-[684px] md:top-[1px] top-[24px] right-0"
                   alt="Popup"
                   src="/images/popup.png"
                 />
@@ -53,7 +71,7 @@ export const LandingPage = (): JSX.Element => {
       </div>
 
       {/* MAIN SECTION */}
-      <div className="relative w-full h-screen">
+      <div className="relative w-full">
         <MainContainer />
       </div>
     </div>

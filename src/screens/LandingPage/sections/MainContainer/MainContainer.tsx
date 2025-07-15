@@ -66,7 +66,7 @@ export const MainContainer = (): JSX.Element => {
 
         <div className="flex-col items-start justify-center p-2 md:py-3 bg-gray-100 rounded-[30px] flex gap-3 relative self-stretch w-full flex-[0_0_auto]">
           <div className="items-center flex flex-wrap gap-3 relative self-stretch w-full flex-[0_0_auto]">
-            <div className="flex flex-col items-center gap-2 md:gap-3 p-3 md:p-4 relative flex-1 grow bg-white rounded-3xl shadow-[0px_4px_12px_#00000014]">
+            <div className="flex flex-col items-center gap-2 md:gap-3 p-3 md:p-4 md:pb-5 relative flex-1 grow bg-white rounded-3xl shadow-[0px_4px_12px_#00000014]">
               <div className="flex flex-col items-center gap-3 md:gap-4 px-4 py-2 md:py-4 md:px-4 relative self-stretch w-full flex-[0_0_auto]">
                 <div className="relative w-fit mt-[-1.00px] [font-family:'SF_UI_Text-Medium',Helvetica] font-medium text-gray-800 text-lg md:text-xl text-center tracking-[0] leading-[30px] whitespace-nowrap">
                   AI Symptom Checker
@@ -85,7 +85,7 @@ export const MainContainer = (): JSX.Element => {
               />
             </div>
 
-            <div className="flex flex-col items-center gap-2 md:gap-3 p-3 md:p-4 relative flex-1 grow bg-white rounded-3xl shadow-[0px_4px_12px_#00000014]">
+            <div className="flex flex-col items-center gap-2 md:gap-3 p-3 md:p-4 md:pb-5 relative flex-1 grow bg-white rounded-3xl shadow-[0px_4px_12px_#00000014]">
               <div className="flex flex-col items-center gap-3 md:gap-4 px-4 py-2 md:py-4 md:px-4 relative self-stretch w-full flex-[0_0_auto]">
                 <p className="relative w-fit [font-family:'SF_UI_Text-Medium',Helvetica] font-medium text-gray-800 text-lg md:text-xl text-center tracking-[0] leading-[30px] whitespace-nowrap m-0">
                   Lost &amp; Found Pet Locator
@@ -104,7 +104,7 @@ export const MainContainer = (): JSX.Element => {
               />
             </div>
 
-            <div className="flex flex-col items-center gap-2 md:gap-3 p-3 md:p-4 relative flex-1 grow bg-white rounded-3xl shadow-[0px_4px_12px_#00000014]">
+            <div className="flex flex-col items-center gap-2 md:gap-3 p-3 md:p-4 md:pb-5 relative flex-1 grow bg-white rounded-3xl shadow-[0px_4px_12px_#00000014]">
               <div className="flex flex-col items-center gap-3 md:gap-4 px-4 py-2 md:py-4 md:px-4 relative self-stretch w-full flex-[0_0_auto]">
                 <div className="relative w-[207px] mt-[-1.00px] [font-family:'SF_UI_Text-Medium',Helvetica] font-medium text-gray-800 text-lg md:text-xl text-center tracking-[0] leading-[30px]">
                   Emergency Help
@@ -168,7 +168,7 @@ export const MainContainer = (): JSX.Element => {
 
       <div className="py-8 md:py-[72px] w-full flex-[0_0_auto] bg-gray-100">
         <div className="container flex flex-col items-center gap-6 md:gap-12 relative self-stretch w-full flex-[0_0_auto]">
-          <div className="relative w-fit mt-[-1.00px] [font-family:'SF_UI_Text-Semibold',Helvetica] font-normal text-gray-800 text-[28px] md:text-[42px] tracking-[0] leading-[35px] md:leading-[63px] whitespace-nowrap">
+          <div className="relative w-fit mt-[-1.00px] [font-family:'SF_UI',Helvetica] font-semibold text-gray-800 text-[28px] md:text-[42px] tracking-[0] leading-[35px] md:leading-[63px] whitespace-nowrap">
             How It Works
           </div>
 
@@ -269,7 +269,7 @@ export const MainContainer = (): JSX.Element => {
 
       <div className="container flex flex-col items-center gap-6 md:gap-12 py-8 md:py-[72px] relative self-stretch w-full flex-[0_0_auto] bg-white">
         <div className="flex flex-col w-full md:w-[570px] items-center gap-3 md:gap-4 relative flex-[0_0_auto]">
-          <div className="relative w-fit text-center mt-[-1.00px] [font-family:'SF_UI_Text-Semibold',Helvetica] font-normal text-gray-800 text-[28px] md:text-[42px] tracking-[0] leading-[45px] md:leading-[63px]">
+          <div className="relative w-fit text-center mt-[-1.00px] [font-family:'SF_UI',Helvetica] font-semibold text-gray-800 text-[28px] md:text-[42px] tracking-[0] leading-[45px] md:leading-[63px]">
             Loved by Pet Parents
           </div>
 
@@ -351,7 +351,10 @@ export const MainContainer = (): JSX.Element => {
         <div className="inline-flex items-start gap-3 relative flex-[0_0_auto]">
           <img
             onClick={() => swiperRef.current?.slidePrev()}
-            className={`w-[46px] h-[46px] md:w-14 md:h-14 cursor-pointer transition-opacity duration-300 ${activeIndex === 0 ? "opacity-50 pointer-events-none" : "opacity-100"
+            tabIndex={-1}
+            draggable={false}
+            aria-disabled={activeIndex === 0}
+            className={`w-[46px] h-[46px] md:w-14 md:h-14 cursor-pointer transition-opacity rounded-full duration-300 select-none ${activeIndex === 0 ? "opacity-50 pointer-events-none" : "opacity-100"
               }`}
             alt="Previous"
             src="/images/left-arrow.svg"
@@ -359,7 +362,10 @@ export const MainContainer = (): JSX.Element => {
 
           <img
             onClick={() => swiperRef.current?.slideNext()}
-            className={`w-[46px] h-[46px] md:w-14 md:h-14 cursor-pointer transition-opacity duration-300 ${activeIndex === testimonials.length - (typeof window !== "undefined" && window.innerWidth >= 768 ? 2 : 1)
+            tabIndex={-1}
+            draggable={false}
+            aria-disabled={activeIndex === 0}
+            className={`w-[46px] h-[46px] md:w-14 md:h-14 cursor-pointer transition-opacity rounded-full duration-300 select-none ${activeIndex === testimonials.length - (typeof window !== "undefined" && window.innerWidth >= 768 ? 2 : 1)
               ? "opacity-50 pointer-events-none"
               : "opacity-100"
               }`}

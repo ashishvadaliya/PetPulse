@@ -66,7 +66,7 @@ export const FAQSection = (): JSX.Element => {
 
   return (
     <div className="container flex flex-col w-full items-center gap-6 py-8 md:gap-12 md:py-[72px] relative flex-[0_0_auto]">
-      <div className="relative w-fit mt-[-1.00px] text-center [font-family:'SF_UI_Text-Semibold',Helvetica] font-normal text-gray-800 text-[28px] md:text-[42px] tracking-[0] leading-[45px] md:leading-[63px]">
+      <div className="relative w-fit mt-[-1.00px] text-center [font-family:'SF_UI',Helvetica] font-semibold text-gray-800 text-[28px] md:text-[42px] tracking-[0] leading-[45px] md:leading-[65px]">
         Frequently Asked Questions
       </div>
 
@@ -85,7 +85,7 @@ export const FAQSection = (): JSX.Element => {
                   </div>
 
                   {faq.isOpen && (
-                    <p className="relative self-stretch [font-family:'SF_UI_Text-Regular',Helvetica] font-normal text-gray-600 text-xs md:text-sm tracking-[0.5px] md:tracking-[0] leading-[21px] m-0">
+                    <p className="relative self-stretch [font-family:'SF_UI_Text-Regular',Helvetica] font-normal text-gray-600 text-xs md:text-sm tracking-[0.5px] md:tracking-[0.5px] leading-[21px] m-0">
                       {faq.answer}
                     </p>
                   )}

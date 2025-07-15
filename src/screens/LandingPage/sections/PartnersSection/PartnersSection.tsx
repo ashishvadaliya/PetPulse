@@ -41,7 +41,7 @@ export const PartnersSection = (): JSX.Element => {
   const repeatedPartners = [...partners, ...partners]; // clone for smooth loop
 
   return (
-    <div className="w-full overflow-hidden bg-gray-100 py-4 md:py-6">
+    <div className="w-full overflow-hidden bg-gray-100 py-4 md:py-8">
       <div className="whitespace-nowrap animate-partner-slide flex gap-10">
         {repeatedPartners.map((partner, index) => (
           <div
