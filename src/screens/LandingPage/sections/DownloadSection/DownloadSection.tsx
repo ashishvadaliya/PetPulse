@@ -1,48 +1,5 @@
-import { useEffect, useState } from "react";
 
 export const DownloadSection = (): JSX.Element => {
-
-  const [isInstallable, setIsInstallable] = useState<boolean>(false);
-  const [deferredPrompt, setDeferredPrompt] = useState<any>(null);
-
-  useEffect(() => {
-    const handleBeforeInstallPrompt = (e: Event) => {
-      e.preventDefault();
-      setDeferredPrompt(e);
-      setIsInstallable(true);
-    };
-
-    const handleAppInstalled = () => {
-      setIsInstallable(false);
-      setDeferredPrompt(null);
-      console.log("PWA was installed");
-    };
-
-    window.addEventListener("beforeinstallprompt", handleBeforeInstallPrompt);
-    window.addEventListener("appinstalled", handleAppInstalled);
-
-    return () => {
-      window.removeEventListener("beforeinstallprompt", handleBeforeInstallPrompt);
-      window.removeEventListener("appinstalled", handleAppInstalled);
-    };
-  }, []);
-
-  const handleInstallClick = () => {
-    if (!deferredPrompt) return;
-
-    deferredPrompt.prompt();
-
-    deferredPrompt.userChoice.then((choiceResult: { outcome: string }) => {
-      if (choiceResult.outcome === "accepted") {
-        console.log("User accepted the install prompt");
-      } else {
-        console.log("User dismissed the install prompt");
-      }
-      setDeferredPrompt(null);
-      setIsInstallable(false);
-    });
-  };
-
 
   return (
     <div className="flex flex-col w-full items-start gap-2.5 px-6 md:px-0 py-8 md:py-[72px] relative flex-[0_0_auto] bg-gray-100">
@@ -64,22 +21,20 @@ export const DownloadSection = (): JSX.Element => {
 
             <div className="inline-flex items-center gap-4 relative flex-[0_0_auto] w-full">
               {/* Updated Download App CTA button */}
-              {isInstallable && (
-                <button
-                  onClick={handleInstallClick}
+              <button
+                onClick={() => window.open("https://www.petpulseai.com/install", "_blank")}
 
-                  className="inline-flex h-[46px] md:h-14 w-full md:w-fit items-center justify-center gap-2.5 px-6 py-4 relative flex-[0_0_auto] bg-white rounded-xl !border-none transition-colors duration-300 cursor-pointer"
-                >
-                  <div className="relative [font-family:'SF_UI_Text-Medium',Helvetica] font-medium text-gray-800 text-sm md:text-base text-center tracking-[0] leading-6 whitespace-nowrap">
-                    Download the App
-                  </div>
-                  <img
-                    src="/images/download.svg"
-                    alt="download"
-                    className="w-5 h-5 md:w-6 md:h-6 object-contain pointer-events-none select-none"
-                  />
-                </button>
-              )}
+                className="inline-flex h-[46px] md:h-14 w-full md:w-fit items-center justify-center gap-2.5 px-6 py-4 relative flex-[0_0_auto] bg-white rounded-xl !border-none transition-colors duration-300 cursor-pointer"
+              >
+                <div className="relative [font-family:'SF_UI_Text-Medium',Helvetica] font-medium text-gray-800 text-sm md:text-base text-center tracking-[0] leading-6 whitespace-nowrap">
+                  Download the App
+                </div>
+                <img
+                  src="/images/download.svg"
+                  alt="download"
+                  className="w-5 h-5 md:w-6 md:h-6 object-contain pointer-events-none select-none"
+                />
+              </button>
             </div>
           </div>
 
@@ -103,7 +58,7 @@ export const DownloadSection = (): JSX.Element => {
             {/* Phone Image */}
             <div className="relative z-10 w-[295px] h-[295px] md:w-full md:h-full">
               <img
-                src="/images/phone-mockup.svg"
+                src="/images/phone-mockup.png"
                 alt="glow-1"
                 className="w-full h-full object-contain pointer-events-none select-none"
               />

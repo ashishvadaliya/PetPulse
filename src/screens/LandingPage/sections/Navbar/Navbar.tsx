@@ -69,7 +69,7 @@ export const Navbar = ({ hasScrolled = false }: NavbarProps): JSX.Element => {
             <a
               key={text}
               href={`#${text.toLowerCase().replace(/\s+/g, "")}`}
-              className="font-sf-semibold text-sm font-medium text-gray-800 hover:text-[#2d57ed] transition-colors"
+              className="font-sf text-sm font-medium text-gray-800 hover:text-[#2d57ed] transition-colors"
             >
               {text}
             </a>
@@ -79,7 +79,7 @@ export const Navbar = ({ hasScrolled = false }: NavbarProps): JSX.Element => {
         <div className="flex items-center gap-6">
           <button
           onClick={() => window.open("https://www.petpulseai.com/signup?role=pet-owner", "_blank") }
-          className="hidden md:flex font-sf-semibold h-12 px-6 py-3 cursor-pointer rounded-xl hover:bg-gray-200 transition-colors bg-transparent !border-none text-sm font-medium text-gray-800">
+          className="hidden md:flex font-sf-medium h-12 px-6 py-3 cursor-pointer rounded-xl hover:bg-gray-200 transition-colors bg-transparent !border-none text-sm font-medium text-gray-800">
             Sign Up
           </button>
 

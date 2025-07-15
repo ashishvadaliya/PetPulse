@@ -2,9 +2,10 @@ import { PartnersSection } from "../PartnersSection";
 import { FAQSection } from "../FAQSection";
 import { DownloadSection } from "../DownloadSection";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper/modules";
+import { Navigation, Autoplay } from "swiper/modules";
 import type { Swiper as SwiperType } from "swiper";
 import { useRef, useState } from "react";
+import Icon from "../../../../components/Utils/Icon";
 
 export const MainContainer = (): JSX.Element => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -292,13 +293,17 @@ export const MainContainer = (): JSX.Element => {
             onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
             slidesPerView={1}
             spaceBetween={16}
+            autoplay={{
+              delay: 2500,
+              disableOnInteraction: false,
+            }}
             breakpoints={{
               220: { slidesPerView: 1 },
               640: { slidesPerView: 1 },
               768: { slidesPerView: 1 },
               1024: { slidesPerView: 2 },
             }}
-            modules={[Navigation]}
+            modules={[Autoplay, Navigation]}
             navigation={false}
             className="w-full"
           >
@@ -306,7 +311,7 @@ export const MainContainer = (): JSX.Element => {
               <SwiperSlide key={idx}>
                 <div className="flex items-start md:flex-row flex-col justify-center gap-2 md:gap-3 p-3 md:p-4 bg-white rounded-3xl shadow-[0px_4px_12px_#00000014] w-full md:w-[567px] h-full">
                   <img
-                    className="w-full md:w-[200px] h-[200px] md:h-[223px] object-cover rounded-2xl"
+                    className="w-full md:w-[200px] h-[200px] md:h-[223px] object-cover object-top rounded-2xl"
                     alt="Testimonial"
                     src={item.image}
                   />
@@ -349,7 +354,33 @@ export const MainContainer = (): JSX.Element => {
         {/* Navigation buttons (unchanged layout) */}
 
         <div className="inline-flex items-start gap-3 relative flex-[0_0_auto]">
-          <img
+          <div
+            onClick={() => swiperRef.current?.slidePrev()}
+            tabIndex={-1}
+            draggable={false}
+            aria-disabled={activeIndex === 0}
+            className={`flex justify-center items-center w-[46px] h-[46px] md:w-14 md:h-14 cursor-pointer rounded-full duration-300 select-none ${activeIndex === 0 ? " bg-white" : "opacity-100 bg-button"
+              }`}
+            style={{ border: "1px solid #2D57ED" }}
+          >
+            <Icon icon="left-arrow" className={`w-[10.95px] h-[13.14px] md:w-[13px] md:h-4 cursor-pointer ${activeIndex === 0 ? "text-button" : " text-white"
+              }`} />
+          </div>
+          <div
+            onClick={() => swiperRef.current?.slideNext()}
+            tabIndex={-1}
+            draggable={false}
+            aria-disabled={activeIndex === 0}
+            className={`flex justify-center items-center w-[46px] h-[46px] md:w-14 md:h-14 cursor-pointer rounded-full duration-300 select-none ${activeIndex === testimonials.length - (typeof window !== "undefined" && window.innerWidth >= 768 ? 2 : 1)
+              ? "bg-white"
+              : "bg-button"
+              }`}
+            style={{ border: "1px solid #2D57ED" }}
+          >
+            <Icon icon="right-arrow" className={`w-[10.95px] h-[13.14px] md:w-[13px] md:h-4 cursor-pointer ${activeIndex === testimonials.length - (typeof window !== "undefined" && window.innerWidth >= 768 ? 2 : 1) ? "text-button" : " text-white"
+              }`} />
+          </div>
+          {/* <img
             onClick={() => swiperRef.current?.slidePrev()}
             tabIndex={-1}
             draggable={false}
@@ -358,9 +389,9 @@ export const MainContainer = (): JSX.Element => {
               }`}
             alt="Previous"
             src="/images/left-arrow.svg"
-          />
+          /> */}
 
-          <img
+          {/* <img
             onClick={() => swiperRef.current?.slideNext()}
             tabIndex={-1}
             draggable={false}
@@ -371,7 +402,7 @@ export const MainContainer = (): JSX.Element => {
               }`}
             alt="Next"
             src="/images/right-arrow.svg"
-          />
+          /> */}
         </div>
       </div>
 
@@ -380,7 +411,7 @@ export const MainContainer = (): JSX.Element => {
       <FAQSection />
 
       <footer className="flex flex-col w-full items-center relative flex-[0_0_auto] bg-gray-800 overflow-hidden">
-        <div className="container flex flex-col md:flex-row gap-6 h-full md:h-24 items-center justify-between px-[135px] py-6 md:py-[30px] relative self-stretch w-full">
+        <div className="container flex flex-col md:flex-row gap-6 h-full md:h-24 items-center justify-between py-6 pb-4 md:pb-[30px] md:py-[30px] relative self-stretch w-full">
           <div className="inline-flex flex-col items-start gap-2.5 relative flex-[0_0_auto]">
             <img
               className="relative w-[110px] h-8 md:w-[124px] md:h-9"
@@ -390,29 +421,29 @@ export const MainContainer = (): JSX.Element => {
           </div>
 
           <div className="inline-flex items-start gap-[42px] relative flex-[0_0_auto]">
-            <div className="relative w-fit mt-[-1.00px] [font-family:'SF_UI_Text-Medium',Helvetica] font-medium text-white text-sm tracking-[0] leading-[21px] whitespace-nowrap">
+            <div className="relative w-fit mt-[-1.00px] [font-family:'SF_UI_Text-Medium',Helvetica] font-medium text-white text-xs md:text-sm tracking-[0] leading-[21px] whitespace-nowrap">
               Home
             </div>
 
-            <div className="relative w-fit mt-[-1.00px] [font-family:'SF_UI_Text-Medium',Helvetica] font-medium text-white text-sm tracking-[0] leading-[21px] whitespace-nowrap">
+            <div className="relative w-fit mt-[-1.00px] [font-family:'SF_UI_Text-Medium',Helvetica] font-medium text-white text-xs md:text-sm tracking-[0] leading-[21px] whitespace-nowrap">
               About
             </div>
 
-            <div className="relative w-fit mt-[-1.00px] [font-family:'SF_UI_Text-Medium',Helvetica] font-medium text-white text-sm tracking-[0] leading-[21px] whitespace-nowrap">
+            <div className="relative w-fit mt-[-1.00px] [font-family:'SF_UI_Text-Medium',Helvetica] font-medium text-white text-xs md:text-sm tracking-[0] leading-[21px] whitespace-nowrap">
               Features
             </div>
 
-            <div className="relative w-fit mt-[-1.00px] [font-family:'SF_UI_Text-Medium',Helvetica] font-medium text-white text-sm tracking-[0] leading-[21px] whitespace-nowrap">
+            <div className="relative w-fit mt-[-1.00px] [font-family:'SF_UI_Text-Medium',Helvetica] font-medium text-white text-xs md:text-sm tracking-[0] leading-[21px] whitespace-nowrap">
               Contact Us
             </div>
           </div>
 
           <div className="inline-flex items-start justify-center gap-4 relative flex-[0_0_auto]">
-            <div className="inline-flex flex-col max-w-[30px] items-start relative flex-[0_0_auto]">
-              <div className="flex max-w-[30px] h-[30px] items-start relative w-full">
-                <div className="flex flex-col items-center justify-center cursor-pointer pt-[1.78e-15px] pl-[1.78e-15px] pr-0 pb-0 w-[30px] h-[30px] relative">
+            <div className="inline-flex flex-col items-start relative flex-[0_0_auto]">
+              <div className="flex h-6 md:h-[30px] items-start relative w-full">
+                <div className="flex flex-col items-center justify-center cursor-pointer pt-[1.78e-15px] pl-[1.78e-15px] pr-0 pb-0 w-6 h-6 md:w-[30px] md:h-[30px] relative">
                   <img
-                    className="w-[30px] h-[30px] relative"
+                    className="w-6 h-6 md:w-[30px] md:h-[30px] relative"
                     alt="Img"
                     src="/images/instagram.svg"
                   />
@@ -420,11 +451,11 @@ export const MainContainer = (): JSX.Element => {
               </div>
             </div>
 
-            <div className="inline-flex flex-col max-w-[30px] items-start relative flex-[0_0_auto]">
-              <div className="flex max-w-[30px] h-[30px] items-start relative w-full">
-                <div className="flex flex-col items-center justify-center cursor-pointer pt-[1.78e-15px] pl-[1.78e-15px] pr-0 pb-0 w-[30px] h-[30px] relative">
+            <div className="inline-flex flex-col items-start relative flex-[0_0_auto]">
+              <div className="flex h-6 md:h-[30px] items-start relative w-full">
+                <div className="flex flex-col items-center justify-center cursor-pointer pt-[1.78e-15px] pl-[1.78e-15px] pr-0 pb-0 w-6 h-6 md:w-[30px] md:h-[30px] relative">
                   <img
-                    className="w-[30px] h-[30px] relative"
+                    className="w-6 h-6 md:w-[30px] md:h-[30px] relative"
                     alt="Img"
                     src="/images/threads-white.svg"
                   />
@@ -432,11 +463,11 @@ export const MainContainer = (): JSX.Element => {
               </div>
             </div>
 
-            <div className="inline-flex flex-col max-w-[30px] items-start relative flex-[0_0_auto]">
-              <div className="flex max-w-[30px] h-[30px] items-start relative w-full">
-                <div className="flex flex-col items-center justify-center cursor-pointer pt-[1.78e-15px] pl-[1.78e-15px] pr-0 pb-0 w-[30px] h-[30px] relative">
+            <div className="inline-flex flex-col items-start relative flex-[0_0_auto]">
+              <div className="flex h-6 md:h-[30px] items-start relative w-full">
+                <div className="flex flex-col items-center justify-center cursor-pointer pt-[1.78e-15px] pl-[1.78e-15px] pr-0 pb-0 w-6 h-6 md:w-[30px] md:h-[30px] relative">
                   <img
-                    className="w-[30px] h-[30px] relative"
+                    className="w-6 h-6 md:w-[30px] md:h-[30px] relative"
                     alt="Img"
                     src="/images/x.svg"
                   />
@@ -452,8 +483,8 @@ export const MainContainer = (): JSX.Element => {
           src="/images/line-31.svg"
         />
 
-        <div className="container flex md:h-[81px] items-center justify-center px-0 py-4 md:py-[30px] relative self-stretch w-full">
-          <p className="relative w-fit [font-family:'SF_UI_Text-Regular',Helvetica] font-normal text-white text-xs md:text-sm tracking-[0] leading-[21px] whitespace-nowrap m-0">
+        <div className="container flex md:h-[81px] items-center justify-center px-0 py-4 pb-6 md:pb-[30px] md:py-[30px] relative self-stretch w-full">
+          <p className="relative w-fit [font-family:'SF_UI',Helvetica] font-extralight text-white text-xs md:text-sm tracking-[0.5px] leading-[21px] whitespace-nowrap m-0">
             © Copyright 2025, All Rights Reserved
           </p>
         </div>
@@ -461,13 +492,13 @@ export const MainContainer = (): JSX.Element => {
         <img
           src="/images/ellipse-9.png"
           alt="Glow"
-          className="absolute z-[0] w-[182px] h-full md:h-[177px] top-0 -left-0 opacity-95 pointer-events-none select-none"
+          className="absolute z-[0] w-[300px] h-full md:h-[177px] top-0 -left-0 opacity-95 pointer-events-none select-none"
         />
 
         <img
           src="/images/ellipse-8.png"
           alt="Glow"
-          className="absolute z-[0] w-[182px] h-full md:h-[177px] top-0 right-0 opacity-95 pointer-events-none select-none"
+          className="absolute z-[0] w-[300px] h-full md:h-[177px] top-0 right-0 opacity-95 pointer-events-none select-none"
         />
 
       </footer>

@@ -23,15 +23,15 @@ export const LandingPage = (): JSX.Element => {
   return (
     <div
       ref={containerRef}
-      className="bg-white w-full flex flex-col relative h-screen overflow-y-auto">
+      className="bg-white w-full flex flex-col relative h-screen">
       <OfflineAlert />
       <Navbar hasScrolled={hasScrolled} />
 
       {/* HEADER + HERO SECTION + GLOW */}
       <div className="w-full relative">
-        <div className="w-full flex flex-col lg:min-[1025px]:flex-row relative">
+        <div className="w-full flex flex-col justify-center lg:min-[1025px]:flex-row relative">
           {/* LEFT: Hero Section */}
-          <div className="w-full lg:min-[1025px]:w-1/2 relative z-10">
+          <div className="w-full lg:min-[1025px]:w-1/2 relative z-10 contents">
             <HeroSection />
           </div>
 

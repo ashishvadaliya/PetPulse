@@ -52,13 +52,14 @@ export const FAQSection = (): JSX.Element => {
   ]);
 
   const toggleFAQ = (index: number) => {
-    setFaqs(faqs.map((faq, i) => {
-      if (i === index) {
-        return { ...faq, isOpen: !faq.isOpen };
-      }
-      return faq;
-    }));
-  };
+  setFaqs(prevFaqs =>
+    prevFaqs.map((faq, i) => ({
+      ...faq,
+      isOpen: i === index ? !faq.isOpen : false,
+    }))
+  );
+};
+
 
   // Split FAQs into two columns
   const leftColumnFAQs = faqs.slice(0, 5);
@@ -76,10 +77,10 @@ export const FAQSection = (): JSX.Element => {
             {leftColumnFAQs.map((faq, index) => (
               <div 
                 key={`faq-left-${index}`} 
-                className={`flex items-start gap-4 md:gap-6 pl-5 md:pl-8 pr-3 py-3 md:pr-4 md:py-4 relative self-stretch w-full flex-[0_0_auto] bg-white rounded-3xl shadow-[0px_4px_12px_#00000014] cursor-pointer transition-all duration-300 ${faq.isOpen ? '' : ''}`}
+                className={`flex gap-4 md:gap-6 pl-5 md:pl-8 pr-3 py-3 md:pr-4 md:py-4 relative self-stretch w-full flex-[0_0_auto] bg-white rounded-3xl shadow-[0px_4px_12px_#00000014] cursor-pointer transition-all duration-300 ${faq.isOpen ? 'items-start' : 'items-center'}`}
                 onClick={() => toggleFAQ(index)}
               >
-                <div className="flex flex-col items-start justify-center gap-2 md:gap-3 relative flex-1 grow">
+                <div className="flex flex-col items- justify-center gap-2 md:gap-3 relative flex-1 grow">
                   <div className="relative w-fit mt-[-1.00px] [font-family:'SF_UI_Text-Medium',Helvetica] font-medium text-gray-800 text-base md:text-xl tracking-[0] md:leading-[30px]">
                     {faq.question}
                   </div>
@@ -107,7 +108,7 @@ export const FAQSection = (): JSX.Element => {
             {rightColumnFAQs.map((faq, index) => (
               <div 
                 key={`faq-right-${index}`} 
-                className={`flex items-start gap-6 pl-5 pr-3 py-3 md:pl-8 md:pr-4 md:py-4 relative self-stretch w-full flex-[0_0_auto] bg-white rounded-3xl shadow-[0px_4px_12px_#00000014] cursor-pointer transition-all duration-300 ${faq.isOpen ? 'mb-2' : ''}`}
+                className={`flex gap-4 md:gap-6 pl-5 md:pl-8 pr-3 py-3 md:pr-4 md:py-4 relative self-stretch w-full flex-[0_0_auto] bg-white rounded-3xl shadow-[0px_4px_12px_#00000014] cursor-pointer transition-all duration-300 ${faq.isOpen ? 'items-start' : 'items-center'}`}
                 onClick={() => toggleFAQ(index + leftColumnFAQs.length)}
               >
                 <div className="flex flex-col items-start justify-center gap-3 relative flex-1 grow">
@@ -116,7 +117,7 @@ export const FAQSection = (): JSX.Element => {
                   </div>
 
                   {faq.isOpen && (
-                    <p className="relative self-stretch [font-family:'SF_UI_Text-Regular',Helvetica] font-normal text-gray-600 text-xs md:text-sm tracking-[0] leading-[21px]">
+                    <p className="relative self-stretch [font-family:'SF_UI_Text-Regular',Helvetica] font-normal text-gray-600 text-xs md:text-sm tracking-[0.5px] md:tracking-[0.5px] leading-[21px] m-0">
                       {faq.answer}
                     </p>
                   )}

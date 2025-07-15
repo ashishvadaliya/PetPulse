@@ -1,52 +1,16 @@
-import { useEffect, useState } from "react";
 
 export const HeroSection = (): JSX.Element => {
-  const [isInstallable, setIsInstallable] = useState<boolean>(false);
-  const [deferredPrompt, setDeferredPrompt] = useState<any>(null);
-
-  useEffect(() => {
-    const handleBeforeInstallPrompt = (e: Event) => {
-      e.preventDefault();
-      setDeferredPrompt(e);
-      setIsInstallable(true);
-    };
-
-    const handleAppInstalled = () => {
-      setIsInstallable(false);
-      setDeferredPrompt(null);
-      console.log("PWA was installed");
-    };
-
-    window.addEventListener("beforeinstallprompt", handleBeforeInstallPrompt);
-    window.addEventListener("appinstalled", handleAppInstalled);
-
-    return () => {
-      window.removeEventListener("beforeinstallprompt", handleBeforeInstallPrompt);
-      window.removeEventListener("appinstalled", handleAppInstalled);
-    };
-  }, []);
-
-  const handleInstallClick = () => {
-    if (!deferredPrompt) return;
-
-    deferredPrompt.prompt();
-
-    deferredPrompt.userChoice.then((choiceResult: { outcome: string }) => {
-      if (choiceResult.outcome === "accepted") {
-        console.log("User accepted the install prompt");
-      } else {
-        console.log("User dismissed the install prompt");
-      }
-      setDeferredPrompt(null);
-      setIsInstallable(false);
-    });
-  };
 
   return (
     <div className="flex flex-col items-start gap-6 md:gap-12 mt-6 lg:min-[1025px]:mt-[100px] mx-6 lg:min-[1025px]:mx-0 lg:min-[1025px]:ml-[138px]">
       <div className="flex flex-col w-full lg:min-[1025px]:w-[570px] lg:min-[1025px]:items-start items-center gap-4 md:gap-6 relative flex-[0_0_auto]">
-        <p className="relative w-full md:w-[570px] lg:min-[1025px]:text-start text-start font-semibold [font-family:'SF_UI',Helvetica] text-gray-800 text-[38px] md:text-[62px] tracking-[-0.50px] leading-[50px] md:leading-[80.6px] m-0">
+        <p className="relative w-full md:w-[570px] lg:min-[1025px]:text-start text-center font-semibold [font-family:'SF_UI',Helvetica] text-gray-800 text-[38px] md:text-[62px] tracking-[-0.50px] leading-[50px] md:leading-[80.6px] m-0">
           Your Pet's Health, Powered by AI
+          <img
+            className="absolute w-[231px] h-[11px] md:w-96 md:h-[19px] top-[48px] md:top-[70px] right-0 md:left-[140px]"
+            alt="Line"
+            src="/images/line-3.svg"
+          />
         </p>
 
         <p className="relative self-stretch [font-family:'SF_UI',Helvetica] font-normal text-gray-600 text-base md:text-lg tracking-[0.5px] leading-[25px] md:leading-[27px] m-0">
@@ -55,11 +19,6 @@ export const HeroSection = (): JSX.Element => {
           — anytime, anywhere.
         </p>
 
-        <img
-          className="absolute w-[231px] h-[11px] md:w-96 md:h-[19px] top-[48px] md:top-[70px] left-20 md:left-[140px]"
-          alt="Line"
-          src="/images/line-3.svg"
-        />
       </div>
 
       <div className="inline-flex w-full md:flex-row flex-col items-center lg:min-[1025px]:justify-start justify-center gap-4 relative flex-[0_0_auto]">
@@ -76,22 +35,19 @@ export const HeroSection = (): JSX.Element => {
             className="w-5 h-5 md:w-6 md:h-6 object-contain pointer-events-none select-none"
           />
         </button>
-        {isInstallable && (
-          <button
-            onClick={handleInstallClick}
-            className="inline-flex cursor-pointer w-full md:w-auto h-[46px] md:h-14 items-center justify-center !border-none gap-2.5 px-6 py-4 relative flex-[0_0_auto] bg-gray-100 rounded-xl hover:bg-gray-200 transition-colors">
-            <div className="relative w-fit [font-family:'SF_UI_Text-Medium',Helvetica] font-medium text-gray-800 text-sm md:text-base text-center tracking-[0] leading-6 whitespace-nowrap">
-              Download the App
-            </div>
+        <button
+          onClick={() => window.open("https://www.petpulseai.com/install", "_blank")}
+          className="inline-flex cursor-pointer w-full md:w-auto h-[46px] md:h-14 items-center justify-center !border-none gap-2.5 px-6 py-4 relative flex-[0_0_auto] bg-gray-100 rounded-xl hover:bg-gray-200 transition-colors">
+          <div className="relative w-fit [font-family:'SF_UI_Text-Medium',Helvetica] font-medium text-gray-800 text-sm md:text-base text-center tracking-[0] leading-6 whitespace-nowrap">
+            Download the App
+          </div>
 
-            <img
-              src="/images/download.svg"
-              alt="download"
-              className="w-5 h-5 md:w-6 md:h-6 object-contain pointer-events-none select-none"
-            />
-          </button>
-        )}
-
+          <img
+            src="/images/download.svg"
+            alt="download"
+            className="w-5 h-5 md:w-6 md:h-6 object-contain pointer-events-none select-none"
+          />
+        </button>
       </div>
 
       <div className="w-full inline-flex items-start justify-center lg:min-[1025px]:justify-start gap-8 relative flex-[0_0_auto]">

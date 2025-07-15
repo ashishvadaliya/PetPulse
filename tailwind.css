@@ -48,10 +48,6 @@ a {
 	text-decoration: none;
 }
 
-@theme {
-	--color-button: #2D57ED;
-}
-
 @layer utilities {
 	.container {
 		/* Center the container */
@@ -99,12 +95,12 @@ a {
 }
 
 .swiper-wrapper {
-  display: flex !important;
-  width: fit-content !important;
+	display: flex !important;
+	width: fit-content !important;
 }
 
 .swiper-slide {
-  display: flex !important;
-  justify-content: center !important;
+	display: flex !important;
+	justify-content: center !important;
 
 }
