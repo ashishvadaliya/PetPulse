@@ -23,7 +23,7 @@ export const LandingPage = (): JSX.Element => {
   return (
     <div
       ref={containerRef}
-      className="bg-white w-full flex flex-col relative h-screen">
+      className="bg-white w-full flex flex-col relative h-screen overflow-y-auto">
       <OfflineAlert />
       <Navbar hasScrolled={hasScrolled} />
 
